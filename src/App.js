@@ -1,28 +1,57 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Promo from './components/Promo';
+
+/*
+Démarrer un projet React
+Créer un composant Promo
+Dans ce composant, initialiser un state qui contient les infos des membres du groupe
+Pour chaque membre, appeler le composant Wilder avec les props correspondants
+Créer un composant Wilder
+Dans ce composant, afficher les infos du wilder concerné
+Intégrer la page pour transformer cet exercice en mini-trombinoscope (Intégration ! =D )
+*/
+
+const data = [
+  {
+    title: "JS 02/19",
+    students: [
+      {
+        firstName: "Richard",
+        lastName: "Gaillet"
+      },
+      {
+        firstName: "Lou",
+        lastName: "Alves"
+      }
+    ]
+  },
+  {
+    title: "PHP 02/19",
+    students: [
+      {
+        firstName: "Dorine",
+        lastName: "Lombardot"
+      },
+      {
+        firstName: "Christine",
+        lastName: "Brassart"
+      }
+    ]
+  }
+];
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      {
+        data.map((promo,i)=>{
+          return <Promo key={i} title={promo.title} students={promo.students}/>
+        })
+      }
       </div>
     );
   }
 }
-
 export default App;
